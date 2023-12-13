@@ -1,4 +1,3 @@
-import { ArrowRightIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import {
   FaBuffer,
@@ -11,30 +10,7 @@ import {
   FaPaperPlane,
   FaUser,
 } from "react-icons/fa";
-const TaskCard = ({ task, isOpen, setIsOpen, }) => {
-  // const task = {
-  //   primaryUser: {
-  //     name: "Liam Parker",
-  //     image:
-  //       "https://img.freepik.com/premium-photo/portrait-young-man-sitting-his-desk-office_484651-5103.jpg",
-  //   },
-  //   secondaryUser: {
-  //     name: "Ava Mitchell",
-  //     image:
-  //       "https://media.istockphoto.com/id/589544922/photo/doing-business-with-his-brain.webp?b=1&s=170667a&w=0&k=20&c=G89mfsUcdhKc5clWfOYVZUGHNQn0rM6m5cupzML6WoA=",
-  //   },
-  //   description: "Introduction to the subject.",
-  //   avatar1: "https://img.freepik.com/premium-photo/portrait-young-man-sitting-his-desk-office_484651-5103.jpg",
-  //   avatar2: "https://media.istockphoto.com/id/589544922/photo/doing-business-with-his-brain.webp?b=1&s=170667a&w=0&k=20&c=G89mfsUcdhKc5clWfOYVZUGHNQn0rM6m5cupzML6WoA=",
-  //   totalComments: 12,
-  //   totalViews: 160,
-  //   totalAttachments: [
-  //     { attachmentName: "Introduction.pdf" },
-  //     { attachmentName: "Graphs.xlsx" },
-  //   ],
-  //   date: "22-11-2023",
-  // };
-
+const TaskCard = ({ task, handleModal }) => {
   const [fileSelected, setFileSelected] = useState(false);
   const [files, setFiles] = useState([]);
 
@@ -92,26 +68,17 @@ const TaskCard = ({ task, isOpen, setIsOpen, }) => {
           <p>{task?.totalComments}</p>
         </div>
         <div className="flex gap-1 items-center">
-          <button onClick={() => setIsOpen(!isOpen)}>
+          <button onClick={() => handleModal(task?._id)}>
             <FaPaperclip />
           </button>
-            <p>25</p>
+          <p>25</p>
         </div>
         <div className="flex gap-1 items-center">
           <FaCalendarAlt />
           <p>{task?.date}</p>
         </div>
       </div>
-      {/* <div>
-        <input type="file" multiple onChange={handleFileChange} />
-        {files.length > 0 && (
-          <ul>
-            {files.map((file, index) => (
-              <li key={index}>{file.name}</li>
-            ))}
-          </ul>
-        )}
-      </div> */}
+      
     </div>
   );
 };
